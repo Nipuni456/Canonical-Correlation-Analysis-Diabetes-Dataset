@@ -1,0 +1,115 @@
+"0","library(tidyverse) "
+"2","Warning: package ‘ggplot2’ was built under R version 4.3.3"
+"2","Warning: package ‘readr’ was built under R version 4.3.3"
+"2","── [1mAttaching core tidyverse packages[22m ────────────────────────────────────────── tidyverse 2.0.0 ──
+[32m✔[39m [34mdplyr    [39m 1.1.4     [32m✔[39m [34mreadr    [39m 2.1.5
+[32m✔[39m [34mforcats  [39m 1.0.0     [32m✔[39m [34mstringr  [39m 1.5.1
+[32m✔[39m [34mggplot2  [39m 3.5.1     [32m✔[39m [34mtibble   [39m 3.2.1
+[32m✔[39m [34mlubridate[39m 1.9.3     [32m✔[39m [34mtidyr    [39m 1.3.0
+[32m✔[39m [34mpurrr    [39m 1.0.2     "
+"2","── [1mConflicts[22m ──────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+[36mℹ[39m Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors"
+"0","library(CCA) "
+"2","Warning: package ‘CCA’ was built under R version 4.3.3"
+"2","Loading required package: fda
+"
+"2","Warning: package ‘fda’ was built under R version 4.3.3"
+"2","Loading required package: splines
+"
+"2","Loading required package: fds
+"
+"2","Warning: package ‘fds’ was built under R version 4.3.3"
+"2","Loading required package: rainbow
+"
+"2","Warning: package ‘rainbow’ was built under R version 4.3.3"
+"2","Loading required package: MASS
+"
+"2","
+Attaching package: ‘MASS’
+
+"
+"2","The following object is masked from ‘package:dplyr’:
+
+    select
+
+"
+"2","Loading required package: pcaPP
+"
+"2","Warning: package ‘pcaPP’ was built under R version 4.3.3"
+"2","Loading required package: RCurl
+"
+"2","
+Attaching package: ‘RCurl’
+
+"
+"2","The following object is masked from ‘package:tidyr’:
+
+    complete
+
+"
+"2","Loading required package: deSolve
+"
+"2","Warning: package ‘deSolve’ was built under R version 4.3.3"
+"2","
+Attaching package: ‘fda’
+
+"
+"2","The following object is masked from ‘package:graphics’:
+
+    matplot
+
+"
+"2","Loading required package: fields
+"
+"2","Warning: package ‘fields’ was built under R version 4.3.3"
+"2","Loading required package: spam
+"
+"2","Warning: package ‘spam’ was built under R version 4.3.3"
+"2","Spam version 2.10-0 (2023-10-23) is loaded.
+Type 'help( Spam)' or 'demo( spam)' for a short introduction 
+and overview of this package.
+Help for individual functions is also obtained by adding the
+suffix '.spam' to the function name, e.g. 'help( chol.spam)'.
+"
+"2","
+Attaching package: ‘spam’
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    backsolve, forwardsolve
+
+"
+"2","Loading required package: viridisLite
+"
+"2","
+Try help(fields) to get started.
+"
+"0","library(CCP) "
+"0","library(candisc) "
+"2","Warning: package ‘candisc’ was built under R version 4.3.3"
+"2","Loading required package: heplots
+"
+"2","Warning: package ‘heplots’ was built under R version 4.3.3"
+"2","Loading required package: broom
+"
+"2","
+Attaching package: ‘candisc’
+
+"
+"2","The following object is masked from ‘package:stats’:
+
+    cancor
+
+"
+"0","library(skimr) "
+"2","Warning: package ‘skimr’ was built under R version 4.3.3"
+"0","library(ggplot2)"
+"0","library(GGally)"
+"2","Warning: package ‘GGally’ was built under R version 4.3.3"
+"2","Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2
+"

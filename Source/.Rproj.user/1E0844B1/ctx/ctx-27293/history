@@ -1,0 +1,132 @@
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("ggplot2")
+install.packages("GGally")
+install.packages("CCA")
+install.packages("CCP")
+install.packages("candisc")
+library(tidyverse)
+library(CCA)
+library(CCP)
+library(candisc)
+library(skimr)
+library(ggplot2)
+library(GGally)
+Diabetes <- read_csv(file = "../Data/diabetes.csv")
+head(Diabetes)
+summary(Diabetes)
+any(is.na(Diabetes))
+Diabetes <- Diabetes[, -ncol(Diabetes)]
+head(Diabetes)
+Biochemical_Measurements <- Diabetes[,c("Glucose","Insulin","DiabetesPedigreeFunction")]
+head(Biochemical_Measurements)
+Physiological_Measurements <- Diabetes[,c("Pregnancies", "BloodPressure", "SkinThickness", "BMI", "Age")]
+head(Physiological_Measurements)
+ggpairs(Biochemical_Measurements)
+ggpairs(Physiological_Measurements)
+#Correlations
+mtcor(Biochemical_Measurements,Physiological_Measurements)
+#Correlations
+matcor(Biochemical_Measurements,Physiological_Measurements)
+cc_model <- cc(Biochemical_Measurements,Physiological_Measurements)
+#Display the Canonical correlations
+cc_model$cor
+#Row cannonical coefficients
+cc_model[3:4]
+# Compute canonical loadings
+cc_model2 <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+#Display canonical loadings
+cc_model2[3,6]
+# Compute canonical loadings
+cc_model2 <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+#Display canonical loadings
+cc_model2[3,5]
+# Compute canonical loadings
+cc_model2 <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+#Display canonical loadings
+cc_model2[3,4]
+# Compute canonical loadings
+cc_model2 <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+#Display canonical loadings
+cc_model2[3,2]
+# Compute canonical loadings
+loadings <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+#Display canonical loadings
+loadings$corr.X.xscores
+loadings$corr.Y.yscores
+loadings$corr.X.yscores
+loadings$corr.Y.xscores
+# Compute canonical loadings
+loadings <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+#Display canonical loadings
+loadings$corr.X.xscores
+loadings$corr.Y.yscores
+loadings$corr.X.yscores
+loadings$corr.Y.xscores
+#tests of canoical dimensions
+rho <- cc_model$cor
+#Define number of observations,number of variables in first set, and number of variables in the second set
+n <- dim(Biochemical_Measurements)[1]
+p <- length(Biochemical_Measurements)[2]
+q <- length(Physiological_Measurements)[2]
+#Calculate p-values using the F-Approximations of the different test statistics:
+p.asym(rho, n, p, q, tstat = "Wilks")
+#tests of canoical dimensions
+rho <- cc_model$cor
+#Define number of observations,number of variables in first set, and number of variables in the second set
+n <- dim(Biochemical_Measurements)[1]
+p <- length(Biochemical_Measurements)[2]
+q <- length(Physiological_Measurements)[2]
+#Calculate p-values using the F-Approximations of the different test statistics:
+p.asym(rho,n,p,q,tstat = "Wilks")
+#tests of canoical dimensions
+rho <- cc_model$cor
+#Define number of observations,number of variables in first set, and number of variables in the second set
+n <- dim(Biochemical_Measurements)[1]
+p <- dim(Biochemical_Measurements)[2]
+q <- dim(Physiological_Measurements)[2]
+#Calculate p-values using the F-Approximations of the different test statistics:
+p.asym(rho,n,p,q,tstat = "Wilks")
+p.asym(rho,n,p,q,tstat = "Hotelling")
+p.asym(rho,n,p,q,tstat = "Pillai")
+p.asym(rho,n,p,q,tstat = "Roy")
+Wilks(cancor(vitamin,nonVitamin))
+p.asym(rho,n,p,q,tstat = "Hotelling")
+p.asym(rho,n,p,q,tstat = "Pillai")
+p.asym(rho,n,p,q,tstat = "Roy")
+Wilks(cancor(Biochemical_Measurements,Physiological_Measurements))
+#Standardized Biochemical_Measurements canonical coefficients diagonal matrix of Biochemical_Measurements sd's
+s1 <- diag(sqrt(diag(cov(Biochemical_Measurements))))
+s1 %*% cc_model$xcoef
+#Standardized Physiological_Measurements canonical coefficients diagonal matrix of Physiological_Measurements sd's
+s2 <- diag(sqrt(diag(cov(Physiological_Measurements))))
+s2 %*% cc_model$ycoef
+Biochemical_Measurements <- apply(Biochemical_Measurements,2,scale)
+Physiological_Measurements <- apply(Physiological_Measurements,2,scale)
+ggpairs(Biochemical_Measurements)
+Diabetes <- read_csv(file = "../Data/diabetes.csv")
+head(Diabetes)
+view(Diabetes)
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("ggplot2")
+install.packages("GGally")
+install.packages("CCA")
+install.packages("CCP")
+install.packages("candisc")
+library(tidyverse)
+library(CCA)
+library(CCP)
+library(candisc)
+library(skimr)
+library(ggplot2)
+library(GGally)
+Diabetes <- read_csv(file = "../Data/diabetes.csv")
+head(Diabetes)
+view(Diabetes)
+summary(Diabetes)
+any(is.na(Diabetes))
+Diabetes <- Diabetes[, -ncol(Diabetes)]
+head(Diabetes)
+Biochemical_Measurements <- Diabetes[,c("Glucose","Insulin","DiabetesPedigreeFunction")]
+head(Biochemical_Measurements)
+Physiological_Measurements <- Diabetes[,c("Pregnancies", "BloodPressure", "SkinThickness", "BMI", "Age")]
+head(Physiological_Measurements)

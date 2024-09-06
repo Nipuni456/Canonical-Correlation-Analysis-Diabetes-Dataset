@@ -1,0 +1,2 @@
+"0","Physiological_Measurements <- Diabetes[,c(""Pregnancies"", ""BloodPressure"", ""SkinThickness"", ""BMI"", ""Age"")]"
+"0","head(Physiological_Measurements)"

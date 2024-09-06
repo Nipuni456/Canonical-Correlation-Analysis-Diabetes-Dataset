@@ -1,0 +1,2 @@
+"0","Biochemical_Measurements <- Diabetes[,c(""Glucose"",""Insulin"",""DiabetesPedigreeFunction"")]"
+"0","head(Biochemical_Measurements)"

@@ -1,0 +1,161 @@
+---
+title: "S18847_ST405_CCA"
+author: "Nipuni"
+date: "2024-05-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages("ggplot2")
+install.packages("GGally")
+install.packages("CCA")
+install.packages("CCP")
+install.packages("candisc")
+```
+
+
+```{r}
+library(tidyverse) 
+library(CCA) 
+library(CCP) 
+library(candisc) 
+library(skimr) 
+library(ggplot2)
+library(GGally)
+
+```
+
+```{r}
+Diabetes <- read_csv(file = "../Data/diabetes.csv")
+head(Diabetes)
+view(Diabetes)
+```
+```{r}
+summary(Diabetes)
+```
+
+```{r}
+any(is.na(Diabetes))
+```
+
+```{r}
+Diabetes <- Diabetes[, -ncol(Diabetes)]
+head(Diabetes)
+```
+
+```{r}
+Biochemical_Measurements <- Diabetes[,c("Glucose","Insulin","DiabetesPedigreeFunction")]
+head(Biochemical_Measurements)
+
+```
+
+```{r}
+Physiological_Measurements <- Diabetes[,c("Pregnancies", "BloodPressure", "SkinThickness", "BMI", "Age")]
+head(Physiological_Measurements)
+```
+
+
+```{r}
+Biochemical_Measurements <- apply(Biochemical_Measurements,2,scale)
+Physiological_Measurements <- apply(Physiological_Measurements,2,scale)
+```
+
+
+
+```{r}
+ggpairs(Biochemical_Measurements)
+```
+
+
+```{r}
+ggpairs(Physiological_Measurements)
+```
+
+```{r}
+#Correlations
+matcor(Biochemical_Measurements,Physiological_Measurements)
+```
+
+```{r}
+Wilks(cancor(Biochemical_Measurements,Physiological_Measurements)) 
+```
+
+
+```{r}
+cc_model <- cc(Biochemical_Measurements,Physiological_Measurements)
+
+#Display the Canonical correlations
+cc_model$cor
+```
+```{r}
+# Significant canonical correlations
+
+cc_model$cor[1:2]
+
+#Squared canonical correlations
+cc_model$cor[1:2]^2
+```
+
+
+```{r}
+#Canonical coefficients
+cc_model$xcoef[,1:2]
+```
+```{r}
+cc_model$ycoef[,1:2]
+```
+
+
+```{r}
+# Compute canonical loadings
+loadings <- comput(Biochemical_Measurements,Physiological_Measurements, cc_model)
+
+#Display canonical loadings
+
+loadings$corr.X.xscores[,1:2]
+```
+
+
+```{r}
+loadings$corr.Y.yscores[,1:2]
+```
+
+
+```{r}
+loadings$corr.X.yscores[,1:2]
+```
+
+
+```{r}
+loadings$corr.Y.xscores[,1:2]
+
+```
+```{r}
+#tests of canonical dimensions
+
+rho <- cc_model$cor
+
+#Define number of observations,number of variables in first set, and number of variables in the second set
+
+n <- dim(Biochemical_Measurements)[1] 
+p <- dim(Biochemical_Measurements)[2] 
+q <- dim(Physiological_Measurements)[2]
+
+#Calculate p-values using the F-Approximations of the different test statistics:
+
+p.asym(rho,n,p,q,tstat = "Wilks") 
+```
+```{r}
+p.asym(rho,n,p,q,tstat = "Hotelling") 
+p.asym(rho,n,p,q,tstat = "Pillai") 
+p.asym(rho,n,p,q,tstat = "Roy") 
+
+```
+
+
+
+
